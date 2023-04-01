@@ -19,6 +19,7 @@ const Header = () => {
           <SearchIcon className='header__searchIcon'/>
       </div>
       <div className="header__nav">
+        <Link to="/login" style={{textDcoration: "none"}}>
         <div className="header__option">
           <span className="header__optionLine1">
             Hello Guest
@@ -27,6 +28,8 @@ const Header = () => {
            Sign In
           </span>     
         </div>
+        </Link>
+
         <div className="header__option">
         <span className="header__optionLine1">
             Returns
