@@ -37,6 +37,9 @@
     margin-right: 10px;
     color:white;
 }
+.header__nav a{
+    text-decoration: none;
+}
 .header__nav{
     display: flex;
     justify-content: space-evenly;
