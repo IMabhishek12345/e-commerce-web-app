@@ -52,6 +52,9 @@ const Payment = () => {
          setSucceeded(true);
          setError(null);
          setProcessing(false);   
+         dispatch({
+            type: "EMPTY_BASKET"
+         })
          navigate("/orders")
       })
         
