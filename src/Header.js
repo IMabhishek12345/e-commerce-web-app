@@ -5,6 +5,7 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Link } from 'react-router-dom';
 import { useStateValue } from './Stateprovider';
 import { auth } from './firebase';
+import SearchProducts from './SearchProducts';
 
 const Header = () => {
   //const [state,dispatch]=useStateValue();
@@ -16,14 +17,17 @@ const Header = () => {
         auth.signOut();
       }
     } 
+    
     return (
     <div className='header'>
       <Link to="/">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWZ5TIn7NBppEK3dGGm4DkdscCVJf6Yjj5QA&usqp=CAU" alt="" className='header__logo' />
       </Link>      
       <div className="header__search">
-        <input className="header__searchIn" type="text" />
-          <SearchIcon className='header__searchIcon'/>
+         <input id="searchIn" className="header__searchIn" type="text" />
+         <Link to="/searchproducts">
+          <SearchIcon onClick={()=><SearchProducts/>} className='header__searchIcon'/>
+         </Link>
       </div>
       <div className="header__nav">
         <Link to={!user && "/login"} >

@@ -30,7 +30,7 @@ const Orders = () => {
     } 
   
  },[user]);
-  console.log("your orders are",orders);
+  
   return (
     <div className='orders'>
        <h1>Your orders</h1>
