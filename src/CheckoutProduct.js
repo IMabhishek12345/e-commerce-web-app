@@ -2,7 +2,7 @@ import React from 'react'
 import "./CheckoutProduct.css";
 import { useStateValue } from './Stateprovider';
 
-const CheckoutProduct = ({ id, image, price, title }) => {
+const CheckoutProduct = ({ id, image, price, title, hideButton }) => {
     //const [state,dispatch]=useStateValue();
     const [{basket},dispatch]=useStateValue(); //since state contains basket that's why we are destructuring it     
     const removefromBasket=()=>{
@@ -25,7 +25,10 @@ const CheckoutProduct = ({ id, image, price, title }) => {
                     <small>₹</small>
                     <strong>{price}</strong>
                 </p>
-                <button onClick={removefromBasket}>Remove from the basket</button>
+                {!hideButton && (
+                 <button onClick={removefromBasket}>Remove from the basket</button>
+                )}
+
             </div>
 
         </div>

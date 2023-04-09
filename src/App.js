@@ -47,11 +47,11 @@ function App() {
       <Route exact path="/login" element={<Login/>}/>
       <Route exact path="/" element={[<Header/>,<Home/>]}/>
       <Route exact path="/checkout" element={[<Header/>,<Checkout/>]}/>
-      <Route exact path="/orders" element={<Orders/>}/>
+      <Route exact path="/orders" element={[<Header/>,<Orders/>]}/>
       <Route exact path="/payment" element={<Elements stripe={stripePromise}>
       [<Header/>,<Payment/>]
        </Elements>}/>
-      <Route exact path="/orders" element={<Orders/>}/>
+      
          
      </Routes>
 

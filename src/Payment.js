@@ -3,9 +3,10 @@ import "./Payment.css";
 import { useStateValue } from './Stateprovider';
 import CheckoutProduct from './CheckoutProduct';
 import { Link, useNavigate } from 'react-router-dom';
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { getBasketTotal } from './reducer';
 import axios from './axios';
+import { db } from './firebase';
 
 const Payment = () => {
 
@@ -49,12 +50,21 @@ const Payment = () => {
       }).then(({paymentIntent})=>{  
        //then((response))=>  :- here i have destructure the response to get paymentIntent
       // and paymentIntent is same as paymentconfirmation 
+         db.collection("users")
+         .doc(user?.uid)
+         .collection('orders') 
+         .doc(paymentIntent.id)
+         .set({
+            basket:basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created
+         }) 
          setSucceeded(true);
          setError(null);
          setProcessing(false);   
          dispatch({
-            type: "EMPTY_BASKET"
-         })
+             type: "EMPTY_BASKET"
+            })
          navigate("/orders")
       })
         
@@ -113,8 +123,9 @@ const Payment = () => {
                             <div className="payment__priceContainer">
                                 <h3>Order Total {inr.format(getBasketTotal(basket))}</h3>
 
-                                <button disabled={processing || disabled || succeeded}></button>
+                                <button disabled={processing || disabled || succeeded}>
                                 <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
+                                </button>
                             </div>
 
                             {error && <div>{error}</div>}
