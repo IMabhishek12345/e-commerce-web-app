@@ -1,8 +1,10 @@
 const functions = require("firebase-functions");
-const express=require("express");
-const cors=require("cors");
-const stripe=require("stripe")("sk_test_51Mmb4vSFAefFlH5LaqKoIPR9ZyHq5jVf7aDaeA3H0hvH4DaBp2gIjeFxmMrUgkcv6XScJZL6Fe4FCViWxpg7Kj2B00FhqoDRlm");
 
+const express=require("express");
+
+const cors=require("cors");
+
+const stripe=require("stripe")("sk_test_51Mmb4vSFAefFlH5LaqKoIPR9ZyHq5jVf7aDaeA3H0hvH4DaBp2gIjeFxmMrUgkcv6XScJZL6Fe4FCViWxpg7Kj2B00FhqoDRlm");
 
 //Api 
 
@@ -35,3 +37,6 @@ exports.api=functions.https.onRequest(app);
 
 // example end point 
 // http://127.0.0.1:5001/e-commerce-clone-2/us-central1/api
+// "predeploy": [
+//     "npm --prefix \"%RESOURCE_DIR%\" run lint"
+//   ]
