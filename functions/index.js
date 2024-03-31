@@ -16,7 +16,7 @@ app.use(express.json());
 
 //API Routes
 app.get("/",(req,res)=> res.status(200).send("Hello world, this is e-commerce clone "));
-//-->>> This is how we cab=n create an end point in our api
+//-->>> This is how we can create an end point in our api
 
 app.post("/payments/create",async (req,res)=>{
     const total=req.query.total;

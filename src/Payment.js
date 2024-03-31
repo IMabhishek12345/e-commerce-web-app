@@ -48,7 +48,9 @@ const Payment = () => {
             card: elements.getElement(CardElement)
            }
       }).then(({paymentIntent})=>{  
-       //then((response))=>  :- here i have destructure the response to get paymentIntent
+       
+       console.log(paymentIntent);
+        //then((response))=>  :- here i have destructure the response to get paymentIntent
       // and paymentIntent is same as paymentconfirmation 
          db.collection("users")
          .doc(user?.uid)
